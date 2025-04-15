@@ -1,0 +1,4 @@
+| Line                    | Type Being Cloned         | What `clone()` Does                      | Performance Impact | Code Context                                                  |
+|-------------------------|---------------------------|------------------------------------------|--------------------|---------------------------------------------------------------|
+| `AES128.clone()`        | `Arc<Circuit>`            | Bumps reference count (shared ownership) | ✅ Efficient        | `let circuit = AES128.clone();`                              |
+| `ciphertext.clone()`    | Likely small ID wrapper   | Duplicates a lightweight handle          | ✅ Very efficient   | `.execute(circuit, &[key, msg], &[ciphertext.clone()])`     |
